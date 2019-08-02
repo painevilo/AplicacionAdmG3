@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+<title>{% block title %} Lista Demandante {% endblock %}</title>
+{% block content %}
+<h4>Listado de demandantes</h4>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>#Rut</th>
+            <th>Nombre</th>
+            <th>Comuna</th>
+            <th>Correo</th>
+            <th>Tel.</th>            
+            <th>Opciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for demandante in object_list %}
+		<tr>
+			<td>{{ demandante.id_padre }}</td>
+            <td>{{ demandante.nombre_demandante }}</td>
+            <td>{{ demandante.comuna_demandante }}</td>
+            <td>{{ demandante.correo_demandante }}</td>
+            <td>{{ demandante.telefono_demandante }}</td>
+			<td>
+				<a class="btn btn-primary" href="{% url 'update_demandante' demandante.id %}">Editar</a>
+				<a class="btn btn-danger" href="{% url 'eliminar_demandante' demandante.id %}">Eliminar</a>
+			</td>
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registro de demandantes</h1>
+		{% endif %}
+	</tbody>
+</table>
+{% endblock %}

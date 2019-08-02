@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+<title>{% block title %} Gestión Cliente {% endblock %}</title>
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	<h3>¿Desea eliminar el registro?</h3>
+	<form>
+		<div class="form-group">
+		<label for="formGroupExampleInput">Rut</label>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ object.rut}}">
+		<label for="formGroupExampleInput">Razón Social</label>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{object.razon_social}}">
+		<label for="formGroupExampleInput">Giro</label>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{object.giro_cliente}}">
+		</div>
+		
+	<button class="btn btn-danger" type="submit">Sí, eliminar</button>
+	<a class="btn btn-primary" href="{% url 'lista_cliente'%}">Cancelar</a>
+	  </form>
+
+	
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+<title>{% block title %} Gestión Demandante {% endblock %}</title>
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	<h3>¿Desea eliminar el registro?</h3>
+	<form>
+		<div class="form-group">
+		<label for="formGroupExampleInput">Razón Social</label>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{object.id_padre}}">
+		<label for="formGroupExampleInput">Demandante</label>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{object.nombre_demandante}}">
+		<label for="formGroupExampleInput">Comuna</label>
+		<input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{object.comuna_demandante}}">
+		</div>
+		<button class="btn btn-danger" type="submit">Sí, eliminar</button>
+		<a class="btn btn-primary" href="{% url 'lista_demandante'%}">Cancelar</a>
+	  </form>
+
+	
+	
+</form>
+{% endblock %}
+

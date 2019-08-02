@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+<title>{% block title %} Lista Clientes {% endblock %}</title>
+{% block content %}
+<h4>Listado de clientes</h4>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>#Rut</th>
+			<th>Razon Social</th>
+			<th>Giro</th>
+            <th>Opciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for cliente in object_list %}
+		<tr>
+			<td>{{ cliente.rut }}</td>
+			<td>{{ cliente.razon_social }}</td>
+			<td>{{ cliente.giro_cliente }}</td>
+			<td>
+				<a class="btn btn-primary" href="{% url 'update_cliente' cliente.id %}">Editar</a>
+				<a class="btn btn-danger" href="{% url 'eliminar_cliente' cliente.id %}">Eliminar</a>
+			</td>
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registro de CLientes</h1>
+		{% endif %}
+	</tbody>
+</table>
+{% endblock %}

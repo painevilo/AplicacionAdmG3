@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<header>
+    <h3>Gestión Demandantes</h3>
+</header>
+<form action="" method="post">{% csrf_token %}
+
+    {% for field in form%}
+    <div class="form-group">
+        <div>{{ field.label_tag }}</div>
+        <div>{{ field }}</div>
+    </div>
+    {% if field.errors %}
+    <div class="row">
+    <div class="label label-danger col-md-2">
+    {{ field.errors  }}
+    </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <input type="submit" class="btn btn-primary"  value="Grabar">
+
+</form>
+{% endblock %}   
+
+
+
